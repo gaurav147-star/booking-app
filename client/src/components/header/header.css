@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.headerContainer .listMode {
+  margin: 20px 0px 0px 0px;
+}
+
 .headerContainer {
   width: 100%;
   max-width: 1024px;
@@ -81,6 +85,7 @@
 .date {
   position: absolute;
   top: 50px;
+  z-index: 2;
 }
 
 .options {
