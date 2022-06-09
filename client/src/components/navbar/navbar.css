@@ -13,7 +13,9 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.user-name{
+  text-transform: capitalize;
+}
 .logo {
   font-weight: 500;
 }
