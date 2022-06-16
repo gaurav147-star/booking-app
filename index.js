@@ -19,7 +19,7 @@ const connect = async () => {
         throw error;
     }
 }
-
+const port = process.env.PORT || 8080;
 app.get("/", (req, res) => {
     res.send("hello first request");
 })
@@ -32,7 +32,7 @@ app.use("/api/users", usersRoute);
 app.use("/api/rooms", roomsRoute);
 app.use("/api/hotels", hotelsRoute);
 
-app.listen(8080, () => {
+app.listen(port, () => {
     connect()
     console.log("Connected to backend");
 })
