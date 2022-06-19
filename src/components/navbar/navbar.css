@@ -1,6 +1,8 @@
 .navbar {
   height: 50px;
-  background-color: #003580;
+  /* background-color: #228000; */
+  background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0,255,226,0.9681372549019608) 100%, rgba(0,0,0,1) 100%);
   display: flex;
   justify-content: center;
 }
@@ -15,9 +17,11 @@
 }
 .user-name{
   text-transform: capitalize;
+  font-weight: bold;
 }
 .logo {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 22px;
 }
 
 .navButton {
@@ -25,5 +29,15 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  color: #003580;
+  color: rgb(2,0,36);
+  background: white;
+  /* border-radius: 2px; */
+  font-size: 15px;
+  
+}
+
+.afterlogin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

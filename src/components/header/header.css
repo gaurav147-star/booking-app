@@ -1,5 +1,7 @@
 .header {
-  background-color: #003580;
+  /* background-color: #003580; */
+  background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0,255,226,0.9681372549019608) 100%, rgba(0,0,0,1) 100%);
   color: white;
   display: flex;
   justify-content: center;
@@ -39,11 +41,15 @@
 }
 
 .headerBtn {
-  background-color: #0071c2;
+  /* background-color: #0071c2; */
+  background: rgb(2,0,36);
+  background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0,255,226,0.9681372549019608) 100%, rgba(0,0,0,1) 100%);
   color: white;
-  font-weight: 500;
-  border: none;
+  font-weight: 700;
+  border: 1px solid #febb02;
+  /* border: none; */
   padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 

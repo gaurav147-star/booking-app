@@ -44,7 +44,7 @@ const Footer = () => {
           <li className="fListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div className="fText">Copyright © 2022 PippoBooking.</div>
+      <div className="fText">Copyright © 2022 Aron-Bookings.</div>
     </div>
   );
 };
