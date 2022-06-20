@@ -1,6 +1,6 @@
 import axiosInstance from "../../config";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
@@ -22,9 +22,9 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-    //   console.log(credentials);
+      //   console.log(credentials);
       const res = await axiosInstance.post("/auth/login", credentials);
-    //   console.log(res);
+      //   console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
@@ -35,24 +35,37 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
-        <input
-          type="text"
-          placeholder="username"
-          id="username"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
-        </button>
-        {error && <span>{error.message}</span>}
+        <p>Login</p>
+        <div className="lCont">
+          <div className="inpcont">
+            <span>Username</span>
+            <input
+              type="text"
+              placeholder="username"
+              id="username"
+              onChange={handleChange}
+              className="lInput"
+            />
+          </div>
+          <div className="inpcont">
+            <span>Password</span>
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              onChange={handleChange}
+              className="lInput"
+            />
+          </div>
+          <button disabled={loading} onClick={handleClick} className="lButton">
+            Login
+          </button>
+          {error && <span>{error.message}</span>}
+          <div className="dd">
+            {" "}
+            Don't have any account? <Link className="loToSi" to="/register">Sign Up</Link>
+          </div>
+        </div>
       </div>
     </div>
   );
