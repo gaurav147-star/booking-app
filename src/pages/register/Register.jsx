@@ -104,7 +104,7 @@ const Register = () => {
 
           <div className="dd">
             {" "}
-            Already hav any account?{" "}
+            Already have an account?{" "}
             <Link className="loToSi" to="/login">
               Sign In
             </Link>

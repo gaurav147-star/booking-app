@@ -41,7 +41,7 @@ const Login = () => {
             <span>Username</span>
             <input
               type="text"
-              placeholder="username"
+              placeholder="enter a username"
               id="username"
               onChange={handleChange}
               className="lInput"
@@ -51,7 +51,7 @@ const Login = () => {
             <span>Password</span>
             <input
               type="password"
-              placeholder="password"
+              placeholder="enter a password"
               id="password"
               onChange={handleChange}
               className="lInput"
