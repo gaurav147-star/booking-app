@@ -1,5 +1,5 @@
 import axiosInstance from "../../config";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
@@ -9,6 +9,12 @@ const Login = () => {
     username: undefined,
     password: undefined,
   });
+  const [errusername, setErrusername] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setErrusername(false);
+    }, 3000);
+  }, [errusername]);
 
   const { loading, error, dispatch } = useContext(AuthContext);
 
@@ -28,6 +34,10 @@ const Login = () => {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
+      console.log(err);
+      if (err.request.status === 404) {
+        setErrusername(true);
+      }
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
@@ -46,6 +56,7 @@ const Login = () => {
               onChange={handleChange}
               className="lInput"
             />
+            {errusername && <span className="err">Username not exists</span>}
           </div>
           <div className="inpcont">
             <span>Password</span>
@@ -63,7 +74,10 @@ const Login = () => {
           {error && <span>{error.message}</span>}
           <div className="dd">
             {" "}
-            Don't have any account? <Link className="loToSi" to="/register">Sign Up</Link>
+            Don't have any account?{" "}
+            <Link className="loToSi" to="/register">
+              Sign Up
+            </Link>
           </div>
         </div>
       </div>
