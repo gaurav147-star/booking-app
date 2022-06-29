@@ -16,9 +16,9 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
-
+  console.log(destination);
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `/hotels?city=${destination.toLowerCase()}&min=${min || 0}&max=${max || 999}`
   );
 
   const handleClick = () => {
@@ -103,7 +103,7 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button  onClick={handleClick}>Search</button>
+            <button onClick={handleClick}>Search</button>
           </div>
           <div className="listResult">
             {loading ? (

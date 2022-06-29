@@ -51,10 +51,12 @@ const Header = ({ type }) => {
   const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    if (destination != "") {
+    if (destination !== "") {
+      const destinationLower=destination.toLowerCase();
+      console.log(destinationLower);
       dispatch({
         type: "NEW_SEARCH",
-        payload: { destination, dates, options },
+        payload: { destinationLower, dates, options },
       });
       navigate("/hotels", { state: { destination, dates, options } });
     }

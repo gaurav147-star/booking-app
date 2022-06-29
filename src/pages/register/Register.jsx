@@ -1,5 +1,5 @@
 import axiosInstance from "../../config";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./register.css";
@@ -7,13 +7,26 @@ import "./register.css";
 const Register = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
+    name: undefined,
     password: undefined,
     email: undefined,
     country: undefined,
     city: undefined,
     phone: undefined,
   });
-
+  const [errusername, setErrusername] = useState(false);
+  const [errsemail, setErrsemail] = useState(false);
+  const [errsdis, setErrsdis] = useState("");
+  useEffect(() => {
+      setTimeout(() => {
+        setErrusername(false);
+    }, 5000);
+  }, [errusername]);
+  useEffect(() => {
+      setTimeout(() => {
+        setErrsemail(false);
+    }, 5000);
+  }, [errsemail]);
   // const { loading, error, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -30,7 +43,14 @@ const Register = () => {
       console.log(res);
       navigate("/login");
     } catch (err) {
+      // console.log(err.request.status);
       console.log(err);
+      if (err.request.status === 404) {
+        setErrusername(true);
+      }
+      if (err.request.status === 405) {
+        setErrsemail(true);
+      }
     }
   };
   return (
@@ -38,6 +58,16 @@ const Register = () => {
       <div className="rContainer">
         <p>Sign Up</p>
         <div className="rCont">
+          <div className="inpcont">
+            <span>Full Name</span>
+            <input
+              type="text"
+              placeholder="full name"
+              id="name"
+              onChange={handleChange}
+              className="lInput"
+            />
+          </div>
           <div className="inpcont">
             <span>Username</span>
             <input
@@ -47,6 +77,7 @@ const Register = () => {
               onChange={handleChange}
               className="lInput"
             />
+            {errusername && <span className="err">Username already exists</span>}
           </div>
           <div className="inpcont">
             <span>Email</span>
@@ -57,6 +88,7 @@ const Register = () => {
               onChange={handleChange}
               className="lInput"
             />
+            {errsemail&& <span className="err">Email already exists</span>}
           </div>
           <div className="inpcont">
             <span>Password</span>
