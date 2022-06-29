@@ -41,4 +41,4 @@ The app was created with the following technologies
 * SASS
 
 ## Screenshot
-![ScreenShot](image.png)
+![image](https://user-images.githubusercontent.com/78996081/176459502-7c8437bd-fcce-4db2-abed-3feef81f9a6c.png)
