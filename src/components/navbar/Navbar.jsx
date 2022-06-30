@@ -3,8 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./navbar.scss";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+  const [close, setClose] = useState(false);
   const navigate = useNavigate();
   const handleclick = () => {
     navigate("/login");
@@ -14,10 +20,14 @@ const Navbar = () => {
   };
   const handleLogout = () => {
     localStorage.removeItem("user");
-    Cookies.remove("access_token")
-    navigate("/login");
+    Cookies.remove("access_token");
+    setClose(true);
+    navigate("/");
+    toast("Logout Successfully!");
   };
-
+  // useEffect(() => {
+  //   toast("Login Successfully!");
+  // }, [user]);
   return (
     <div className="navbar">
       <div className="navContainer">
@@ -27,9 +37,9 @@ const Navbar = () => {
             <b>A</b>ron-<b>B</b>ookings
           </span>
         </Link>
-        {user ? (
+        {user && !close ? (
           <div className="afterlogin">
-            <div className="user-name">{user.username}</div>
+            <div className="user-name">{user.name}</div>
             <button className="navButton" onClick={handleLogout}>
               Logout
             </button>
@@ -45,6 +55,17 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

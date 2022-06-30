@@ -3,6 +3,9 @@ import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.scss";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -26,6 +29,7 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    // toast("Login Successfully!");
     dispatch({ type: "LOGIN_START" });
     try {
       //   console.log(credentials);
@@ -33,8 +37,9 @@ const Login = () => {
       //   console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
+      
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.request.status === 404) {
         setErrusername(true);
       }
@@ -81,6 +86,17 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+       />
     </div>
   );
 };

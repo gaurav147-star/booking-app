@@ -1,8 +1,10 @@
 import axiosInstance from "../../config";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import "./register.scss";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -40,11 +42,12 @@ const Register = () => {
 
     try {
       const res = await axiosInstance.post("/auth/register", credentials);
-      console.log(res);
+      // toast.success("You are registered successfully!");
+      // console.log(res);
       navigate("/login");
     } catch (err) {
       // console.log(err.request.status);
-      console.log(err);
+      // console.log(err);
       if (err.request.status === 404) {
         setErrusername(true);
       }
@@ -143,6 +146,17 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+       />
     </div>
   );
 };
