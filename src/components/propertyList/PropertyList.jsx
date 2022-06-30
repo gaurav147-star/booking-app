@@ -1,5 +1,5 @@
 import React from "react";
-import "./propertyList.css";
+import "./propertyList.scss";
 import useFetch from "../../hooks/useFetch";
 
 const PropertyList = () => {

@@ -2,7 +2,7 @@ import axiosInstance from "../../config";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import "./register.css";
+import "./register.scss";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({

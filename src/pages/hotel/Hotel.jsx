@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./hotel.css";
+import "./hotel.scss";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import MailList from "../../components/mailList/MailList";

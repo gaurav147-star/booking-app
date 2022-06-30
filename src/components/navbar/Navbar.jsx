@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import "./navbar.css";
+import "./navbar.scss";
 import Cookies from "js-cookie";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
