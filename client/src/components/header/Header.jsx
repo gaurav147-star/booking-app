@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import "./header.css";
+import "./header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBed,
