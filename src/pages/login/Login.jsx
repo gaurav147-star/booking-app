@@ -13,7 +13,7 @@ const Login = () => {
   useEffect(() => {
     setTimeout(() => {
       setErrusername(false);
-    }, 3000);
+    }, 5000);
   }, [errusername]);
 
   const { loading, error, dispatch } = useContext(AuthContext);
