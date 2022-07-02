@@ -16,6 +16,7 @@ import { format } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import { useEffect } from "react";
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -38,6 +39,7 @@ const Header = ({ type }) => {
 
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  useEffect(()=>{},[user])
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -100,11 +102,11 @@ const Header = ({ type }) => {
               Get rewarded for your travels – unlock instant savings of 10% or
               more with a free Aron-booking account
             </p>
-            {!user && (
+            {/* {!user && (
               <Link rel="stylesheet" to="/login">
                 <button className="headerBtn">Sign in / Register</button>
               </Link>
-            )}
+            )} */}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

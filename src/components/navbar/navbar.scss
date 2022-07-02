@@ -1,8 +1,13 @@
 .navbar {
   height: 50px;
   /* background-color: #228000; */
-  background: rgb(2,0,36);
-background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0,255,226,0.9681372549019608) 100%, rgba(0,0,0,1) 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0.9192051820728291) 100%,
+    rgba(0, 255, 226, 0.9681372549019608) 100%,
+    rgba(0, 0, 0, 1) 100%
+  );
   display: flex;
   justify-content: center;
 }
@@ -15,9 +20,16 @@ background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0
   align-items: center;
   justify-content: space-between;
 }
-.user-name{
+.user-name {
   text-transform: capitalize;
   font-weight: bold;
+}
+.user-admin {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
 }
 .logo {
   font-weight: 600;
@@ -29,14 +41,13 @@ background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  color: rgb(2,0,36);
+  color: rgb(2, 0, 36);
   background: white;
   /* border-radius: 2px; */
   font-size: 15px;
-  
 }
 
-.afterlogin{
+.afterlogin {
   display: flex;
   justify-content: center;
   align-items: center;
