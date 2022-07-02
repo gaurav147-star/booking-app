@@ -3,9 +3,9 @@ import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.scss";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { isadmin } from "../../action";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -33,11 +33,15 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       //   console.log(credentials);
-      const res = await axiosInstance.post("/auth/login", credentials);
-      //   console.log(res);
+      const res = await axiosInstance.post("/auth/login", credentials, {
+        withCredentials: true,
+      });
+      // console.log(res);
+      console.log(res.data.token);
+
+      isadmin(res.data.isAdmin);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
-      
     } catch (err) {
       // console.log(err);
       if (err.request.status === 404) {
@@ -87,16 +91,16 @@ const Login = () => {
         </div>
       </div>
       <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-       />
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
