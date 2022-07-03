@@ -14,7 +14,7 @@ dotenv.config();
 
 
 app.use(cors({
-  origin: 'https://aronhotelbooking-app.netlify.app',
+  origin:true,
   credentials: true,
 }));
 

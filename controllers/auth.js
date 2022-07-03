@@ -44,7 +44,7 @@ export const login = async (req, res, next) => {
     );
     const { password, isAdmin, ...otherDetails } = user._doc;
     res.cookie("jwt", token, {
-      httpOnly: true,
+      // httpOnly: true,
       path:"/"
     });
     if (!isPasswordCorrect) {
