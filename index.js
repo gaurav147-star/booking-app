@@ -14,7 +14,7 @@ dotenv.config();
 
 
 app.use(cors({
-  origin: 'https://aronhotelbooking-app.netlify.app' || 'http://localhost:3000',
+  origin: 'https://aronhotelbooking-app.netlify.app',
   credentials: true,
 }));
 
