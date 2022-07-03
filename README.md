@@ -6,7 +6,7 @@
 * [Features](#features)
 * [Technologies](#technologies)
 * [Screenshot](#screenshot)
-* [Usage](#Getting)
+* [Getting Started](#screenshot)
 
 
 
