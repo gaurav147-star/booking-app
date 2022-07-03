@@ -9,16 +9,16 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
 dotenv.config();
-app.use(cookieParser());
 
 // app.use(cors());
-const corsConfig = {
-  origin: true,
-  credentials: true,
-};
 
-app.use(cors(corsConfig));
-app.options("*", cors(corsConfig));
+
+app.use(cors({
+  origin: 'https://aronhotelbooking-app.netlify.app' || 'http://localhost:3000',
+  credentials: true,
+}));
+
+app.use(cookieParser());
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
