@@ -18,8 +18,9 @@ const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [close, setClose] = useState(false);
 
-  const chkadmin = useSelector((state) => state.admin);
-  // console.log(chkadmin);
+  const admin = useSelector((state) => state.admin);
+  console.log(admin,"-----");
+  // useEffect(()=>{},[admin])
   const navigate = useNavigate();
   const handleclick = () => {
     navigate("/login");
@@ -30,13 +31,14 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await axiosInstance.post("/auth/logout");
-      localStorage.removeItem("user");
+      localStorage.clear();
+   
       // Cookies.remove("jwt", { path: "/", domain: "localhost" });
       cookies.remove('jwt', { path: "/", domain: "localhost" });
       // document.cookie = jwt;
       setClose(!close);
       navigate("/");
-      isadmin(false);
+      // isadmin(false);
       toast("Logout Successfully!");
     } catch (error) {
       console.log(error);
@@ -56,12 +58,14 @@ const Navbar = () => {
         </Link>
         {user && !close ? (
           <div className="afterlogin">
-            {chkadmin && (
+            {admin===true ? (
               <Link className="user-admin" to="/admin">
                 Admin
               </Link>
-            )}
-            <div className="user-name">{user.name}</div>
+            ):""}
+            <Link className="user-name" to={`/profile/${user.username}`}>
+            <div >{user.name}</div>
+            </Link>
             <button className="navButton" onClick={handleLogout}>
               Logout
             </button>

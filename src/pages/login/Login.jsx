@@ -12,12 +12,6 @@ const Login = () => {
     username: undefined,
     password: undefined,
   });
-  const [errusername, setErrusername] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setErrusername(false);
-    }, 5000);
-  }, [errusername]);
 
   const { loading, error, dispatch } = useContext(AuthContext);
 
@@ -29,7 +23,6 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    // toast("Login Successfully!");
     dispatch({ type: "LOGIN_START" });
     try {
       //   console.log(credentials);
@@ -37,16 +30,18 @@ const Login = () => {
         withCredentials: true,
       });
       // console.log(res);
-      console.log(res.data.token);
-
+      // console.log(res.token);
+      console.log(res.data);
+      localStorage.setItem("token", res.data.token);
       isadmin(res.data.isAdmin);
+      localStorage.setItem("isAdmin",res.data.isAdmin)
+
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
       // console.log(err);
-      if (err.request.status === 404) {
-        setErrusername(true);
-      }
+
+      toast("Invalid Credentials!");
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
@@ -65,7 +60,7 @@ const Login = () => {
               onChange={handleChange}
               className="lInput"
             />
-            {errusername && <span className="err">Username not exists</span>}
+            {/* {errusername && <span className="err">Username not exists</span>} */}
           </div>
           <div className="inpcont">
             <span>Password</span>

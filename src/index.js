@@ -6,17 +6,19 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { SearchContextProvider } from "./context/SearchContext";
 import "./index.scss";
 import { Provider } from "react-redux";
-import {store} from "./store";
-
+import { PersistGate } from "redux-persist/lib/integration/react";
+import store, { persistor } from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <AuthContextProvider>
-        <SearchContextProvider>
-          <App />
-        </SearchContextProvider>
-      </AuthContextProvider>
+      {/* <PersistGate persistor={persistor}> */}
+        <AuthContextProvider>
+          <SearchContextProvider>
+            <App />
+          </SearchContextProvider>
+        </AuthContextProvider>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>
 );
