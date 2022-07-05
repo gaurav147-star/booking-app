@@ -43,14 +43,14 @@ export const login = async (req, res, next) => {
       process.env.JWT_SEC
     );
     const { password, isAdmin, ...otherDetails } = user._doc;
-    res.cookie("jwt", token, {
-      // httpOnly: true,
-      path:"/"
-    });
+    // res.cookie("jwt", token, {
+    //   // httpOnly: true,
+    //   path: "/",
+    // });
     if (!isPasswordCorrect) {
       return next(createError(400, "Wrong password and username"));
     } else {
-      res.status(200).json({ details: { ...otherDetails }, isAdmin });
+      res.status(200).json({ details: { ...otherDetails }, isAdmin, token });
     }
   } catch (err) {
     next(err);
