@@ -41,8 +41,9 @@ export const deleteUser = (id) => async (dispatch) => {
   });
 };
 
-export const updateUser = (name, message, id) => async (dispatch) => {
+export const updateUser = (adminAccess, id) => async (dispatch) => {
   const auth = localStorage.getItem("token");
+  // console.log(adminAccess);
   const config = {
     headers: {
       "Contnet-Type": "application/json",
@@ -52,13 +53,14 @@ export const updateUser = (name, message, id) => async (dispatch) => {
   const { data } = await axiosInstance.put(
     `/users/${id}`,
     {
-      name,
-      message,
+      isAdmin:adminAccess
+      
     },
     config
   );
+  // console.log(data);
   dispatch({
     type: USER_UPDATE,
-    payload: data.data,
+    payload: data,
   });
 };
