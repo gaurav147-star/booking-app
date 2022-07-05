@@ -1,8 +1,11 @@
 import React from 'react'
+import Stripbar from '../../components/stripbar/Stripbar'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+      <Stripbar data="Profile"/>
+    </div>
   )
 }
 

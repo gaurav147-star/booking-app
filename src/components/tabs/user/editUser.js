@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Tooltip,
   IconButton,
   Dialog,
   DialogTitle,
@@ -9,36 +8,38 @@ import {
   TextField,
   DialogContent,
   Button,
-  TextareaAutosize,
   FormControl,
   Typography,
   ListItem,
+  InputLabel,
+  Select,
+  MenuItem,
+  Tooltip,
 } from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import AddIcon from "@mui/icons-material/Add";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { useDispatch, useSelector } from "react-redux";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import { useDispatch } from "react-redux";
 import { updateUser } from "../../../action/user-action";
 
 const EditUser = (props) => {
   const [open, setOpen] = React.useState(false);
   const [adminAccess, setAdminAccess] = useState("");
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const dispatch = useDispatch();
 
   const id = props.id;
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClickClose = (e) => {
+    e.preventDefault();
+    setOpen(false);
+  };
 
-  const handleUpdate = (e) => {
+  const handleClose = (e) => {
     dispatch(updateUser(adminAccess, id));
     setOpen(false);
     e.preventDefault();
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   return (
@@ -48,38 +49,42 @@ const EditUser = (props) => {
           <EditOutlinedIcon style={{ margin: "0px 0px" }} />
         </IconButton>
       </Tooltip>
-
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle style={{ backgroundColor: "green", color: "white" }}>
+      <Dialog open={open} onClose={handleClickClose}>
+        <DialogTitle style={{ backgroundColor: "rgb(2, 0, 36)", color: "white" }}>
           <div style={{ display: "flex" }}>
             <ListItem>
-              <EditOutlinedIcon />
-              <Typography marginX="4px">Edit Reply</Typography>
+              <AddIcon />
+              <Typography marginX="4px">Edit a Member</Typography>
             </ListItem>
-            <IconButton style={{ color: "white" }} onClick={handleClose}>
+            <IconButton style={{ color: "white" }} onClick={handleClickClose}>
               <CloseOutlinedIcon />
             </IconButton>
           </div>
         </DialogTitle>
         <DialogContent>
           <DialogContentText></DialogContentText>
-          <FormControl style={{ margin: "20px" }}>
-            <TextField
-              id="outlined-size-small"
+          <FormControl sx={{ mt: 2 }} fullWidth>
+            <InputLabel id="demo-simple-select-label">
+              Select Role for member
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
               size="small"
-              variant="outlined"
-              style={{ width: "150px" }}
-              label="Name"
+              fullWidth
+              label="select role for member"
               value={adminAccess}
-              onChange={(e) => setAdminAccess(e.target.value)}
-            />
-            <br />
+              onChange={(value) => setAdminAccess(value.target.value)}
+            >
+              <MenuItem value="true">Owner</MenuItem>
+              <MenuItem value="false">User</MenuItem>
+            </Select>
           </FormControl>
         </DialogContent>
         <hr color="lightgrey" />
         <DialogActions>
           <FormControl style={{ margin: "20px" }}>
-            <Button onClick={handleUpdate} variant="contained" color="success">
+            <Button onClick={handleClose} variant="contained" style={{ backgroundColor: "rgb(2, 0, 36)", color: "white" }} >
               Update
             </Button>
           </FormControl>

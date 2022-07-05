@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "../../components/navbar/Navbar";
 import VerticalTabs from "../../components/navtabs/navtabs";
+import Stripbar from "../../components/stripbar/Stripbar";
 import "./admin.scss";
 
 const Admin = () => {
   return (
     <div className="admin">
-      <Navbar />
+      <Stripbar data="Admin"/>
       <VerticalTabs />
     </div>
   );

@@ -4,14 +4,12 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import { Link, useNavigate } from "react-router-dom";
+
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import DeleteUser from "./user/deleteUser";
-import EditUser from "./user/editUser";
+import DeleteUser from "./deleteUser";
+import EditUser from "./editUser";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -32,8 +30,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedTables({ data }) {
-  const navigate = useNavigate();
+export default function UserTables({ data }) {
+ 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 1000 }} aria-label="customized table">

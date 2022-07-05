@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import axiosInstance from "../../../config";
-import useFetch from "../../../hooks/useFetch";
-import CustomizedTables from "../table";
+import UserTables from "./usertable";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../../action/user-action";
 
@@ -16,7 +14,7 @@ const User = () => {
   // console.log(UserReducer);
   return (
     <div className="Userdatatable">
-      <CustomizedTables data={ UserReducer }/>
+      <UserTables data={UserReducer} />
     </div>
   );
 };
