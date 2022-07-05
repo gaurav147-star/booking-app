@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteUser from "./user/deleteUser";
+import EditUser from "./user/editUser";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -62,10 +63,10 @@ export default function CustomizedTables({ data }) {
                 per.isAdmin ? "true" : "false"
               }`}</StyledTableCell>
               <StyledTableCell align="right">
-                <EditIcon />
+                <EditUser id={per._id} />
               </StyledTableCell>
               <StyledTableCell align="right">
-                <DeleteUser id={per._id}/>
+                <DeleteUser id={per._id} />
               </StyledTableCell>
             </StyledTableRow>
           ))}
