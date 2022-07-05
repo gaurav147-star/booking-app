@@ -17,6 +17,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -61,6 +63,8 @@ const Header = ({ type }) => {
         payload: { destinationLower, dates, options },
       });
       navigate("/hotels", { state: { destination, dates, options } });
+    }else{
+      toast("Enter the destination!");
     }
   };
 
@@ -221,6 +225,17 @@ const Header = ({ type }) => {
           </>
         )}
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
