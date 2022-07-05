@@ -1,5 +1,5 @@
 import axiosInstance from "../../config";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.scss";
@@ -25,22 +25,17 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      //   console.log(credentials);
       const res = await axiosInstance.post("/auth/login", credentials, {
         withCredentials: true,
       });
-      // console.log(res);
-      // console.log(res.token);
-      console.log(res.data);
+
       localStorage.setItem("token", res.data.token);
       isadmin(res.data.isAdmin);
-      localStorage.setItem("isAdmin",res.data.isAdmin)
+      localStorage.setItem("isAdmin", res.data.isAdmin);
 
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
-      // console.log(err);
-
       toast("Invalid Credentials!");
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
