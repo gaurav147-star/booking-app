@@ -19,6 +19,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -41,7 +42,7 @@ const Header = ({ type }) => {
 
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  useEffect(()=>{},[user])
+  useEffect(() => {}, [user]);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -56,16 +57,20 @@ const Header = ({ type }) => {
 
   const handleSearch = () => {
     if (destination !== "") {
-      const destinationLower=destination.toLowerCase();
-      console.log(destinationLower);
+      const destinationLower = destination.toLowerCase();
+      // console.log(destinationLower);
       dispatch({
         type: "NEW_SEARCH",
         payload: { destinationLower, dates, options },
       });
       navigate("/hotels", { state: { destination, dates, options } });
-    }else{
+    } else {
       toast("Enter the destination!");
     }
+  };
+
+  const handleBack = () => {
+    navigate(-1);
   };
 
   return (
@@ -97,7 +102,7 @@ const Header = ({ type }) => {
             <span>Airport taxis</span>
           </div>
         </div>
-        {type !== "list" && (
+        {type !== "list" ? (
           <>
             <h1 className="headerTitle">
               A lifetime of discounts? It's Genius.
@@ -222,6 +227,10 @@ const Header = ({ type }) => {
                 </button>
               </div>
             </div>
+          </>
+        ) : (
+          <>
+            <ArrowBackIcon sx={{ fontSize: 27 }} onClick={handleBack} />
           </>
         )}
       </div>

@@ -44,12 +44,13 @@ const Hotel = () => {
   };
 
   const handleMove = (direction) => {
+    // console.log(data.photos.length);
     let newSlideNumber;
 
     if (direction === "l") {
-      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+      newSlideNumber = slideNumber === 0 ? data.photos.length : slideNumber - 1;
     } else {
-      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+      newSlideNumber = slideNumber === data.photos.length ? 0 : slideNumber + 1;
     }
 
     setSlideNumber(newSlideNumber);
@@ -135,7 +136,7 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ( {days}{" "}
+                  <b>₹{days * data.cheapestPrice * options.room}</b> ( {days}{" "}
                   nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
