@@ -113,6 +113,7 @@
     position: sticky;
     top: 0;
     left: 0;
+    // transform: translateY(-280px);
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.613);
@@ -145,7 +146,7 @@
   
   .arrow{
     margin: 20px;
-    font-size: 50px;
-    color: lightgray;
+    font-size: 30px;
+    color: rgba(211, 211, 211, 0.32);
     cursor: pointer;
   }

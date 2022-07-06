@@ -54,7 +54,7 @@ export default function VerticalTabs() {
         display: "flex",
         height: 224,
       }}
-      style={{"width":"100%","height":"100vh"}}
+      style={{"width":"100%","height":"90vh"}}
     >
       <Tabs
         orientation="vertical"

@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 import axiosInstance from "../../config";
 
 const Navbar = () => {
-
   const { user } = useContext(AuthContext);
   const [close, setClose] = useState(false);
 
@@ -25,19 +24,17 @@ const Navbar = () => {
     navigate("/register");
   };
   const handleLogout = async () => {
+    toast("Logout Successfully!");
     try {
       await axiosInstance.post("/auth/logout");
       localStorage.clear();
       setClose(!close);
       navigate("/");
-      toast("Logout Successfully!");
     } catch (error) {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   toast("Login Succe!ssfully!");
-  // }, [user]);
+
   return (
     <div className="navbar">
       <div className="navContainer">
