@@ -230,7 +230,11 @@ const Header = ({ type }) => {
           </>
         ) : (
           <>
-            <ArrowBackIcon sx={{ fontSize: 27 }} onClick={handleBack} />
+            <ArrowBackIcon
+              sx={{ fontSize: 27 }}
+              onClick={handleBack}
+              style={{ cursor: "pointer" }}
+            />
           </>
         )}
       </div>

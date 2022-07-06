@@ -26,6 +26,9 @@
   height: 30px;
   border-radius: 50%;
 }
+.backarrow {
+  cursor: pointer;
+}
 .backarrow > link :hover {
   text-decoration: none;
 }
