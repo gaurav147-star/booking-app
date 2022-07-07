@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 import "./searchItem.scss";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const SearchItem = ({ item }) => {
-  
   return (
     <div className="searchItem">
-      <img src={item.photos[0]} alt="" className="siImg" />
+      <LazyLoadImage
+        effect="blur"
+        src={item.photos[0]}
+        alt=""
+        className="siImg"
+      />
       <div className="siDesc">
         <h1 className="siTitle">{item.name}</h1>
         <span className="siDistance">{item.distance} from center</span>
@@ -30,7 +36,7 @@ const SearchItem = ({ item }) => {
           <span className="siPrice">₹{item.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <Link to={`/hotels/${item._id}`}>
-          <button className="siCheckButton">See availability</button>
+            <button className="siCheckButton">See availability</button>
           </Link>
         </div>
       </div>

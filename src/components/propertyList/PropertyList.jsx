@@ -1,6 +1,8 @@
 import React from "react";
 import "./propertyList.scss";
 import useFetch from "../../hooks/useFetch";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const PropertyList = () => {
   const { data, loading, error } = useFetch("/hotels/countByType");
@@ -16,22 +18,23 @@ const PropertyList = () => {
 
   return (
     <div className="pList">
-      {loading ? (
-        "Loading"
-      ) : (
-        <>
-          {data &&
-            images.map((img, i) => (
-              <div className="pListItem"  key={i}>
-                <img src={img} alt="" className="pListImg"/>
-                <div className="pListTitles">
-                  <h1>{data[i]?.type}</h1>
-                  <h2>{data[i]?.count} {data[i]?.type}</h2>
-                </div>
-              </div>
-            ))}
-        </>
-      )}
+      {data &&
+        images.map((img, i) => (
+          <div className="pListItem" key={i}>
+            <LazyLoadImage
+              effect="blur"
+              src={img}
+              alt=""
+              className="pListImg"
+            />
+            <div className="pListTitles">
+              <h1>{data[i]?.type}</h1>
+              <h2>
+                {data[i]?.count} {data[i]?.type}
+              </h2>
+            </div>
+          </div>
+        ))}
     </div>
   );
 };
