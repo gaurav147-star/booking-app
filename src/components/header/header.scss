@@ -1,15 +1,28 @@
 .header {
   /* background-color: #003580; */
-  background: rgb(2,0,36);
-background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0,255,226,0.9681372549019608) 100%, rgba(0,0,0,1) 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0.9192051820728291) 100%,
+    rgba(0, 255, 226, 0.9681372549019608) 100%,
+    rgba(0, 0, 0, 1) 100%
+  );
   color: white;
   display: flex;
   justify-content: center;
   position: relative;
 }
-
-.headerContainer .listMode {
-  margin: 20px 0px 0px 0px;
+.nonheader {
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background: rgba(222, 222, 222, 0.308);
+}
+.listMode {
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+  max-width: 1024px;
 }
 
 .headerContainer {
@@ -17,7 +30,9 @@ background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0
   max-width: 1024px;
   margin: 20px 0px 100px 0px;
 }
-
+.nonheaderList{
+  display: none;
+}
 .headerList {
   display: flex;
   gap: 40px;
@@ -42,8 +57,13 @@ background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0
 
 .headerBtn {
   /* background-color: #0071c2; */
-  background: rgb(2,0,36);
-  background: linear-gradient(180deg, rgba(2,0,36,0.9192051820728291) 100%, rgba(0,255,226,0.9681372549019608) 100%, rgba(0,0,0,1) 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0.9192051820728291) 100%,
+    rgba(0, 255, 226, 0.9681372549019608) 100%,
+    rgba(0, 0, 0, 1) 100%
+  );
   color: white;
   font-weight: 700;
   border: 1px solid #febb02;

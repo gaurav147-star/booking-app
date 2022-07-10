@@ -16,10 +16,8 @@ const SearchItem = ({ item }) => {
         <h1 className="siTitle">{item.name}</h1>
         <span className="siDistance">{item.distance} from center</span>
         <span className="siTaxiOp">Free airport taxi</span>
-        <span className="siSubtitle">
-          Studio Apartment with Air conditioning
-        </span>
-        <span className="siFeatures">{item.desc}</span>
+        <span className="siSubtitle">{item.address}</span>
+        <span className="siFeatures">{(item.desc).substr(0,120)}...</span>
         <span className="siCancelOp">Free cancellation </span>
         <span className="siCancelOpSubtitle">
           You can cancel later, so lock in this great price today!

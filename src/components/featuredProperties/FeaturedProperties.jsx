@@ -4,7 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch("/hotels?featured=true&limit=6");
+  const { data } = useFetch("/hotels/getCityHotels?featured=true&limit=6");
 
   return (
     <div className="fp">
@@ -18,7 +18,7 @@ const FeaturedProperties = () => {
           />
           <span className="fpName">{item.name}</span>
           <span className="fpCity">{item.city}</span>
-          <span className="fpPrice">Starting from ${item.cheapestPrice}</span>
+          <span className="fpPrice">Starting from ₹{item.cheapestPrice}</span>
           {item.rating && (
             <div className="fpRating">
               <button>{item.rating}</button>

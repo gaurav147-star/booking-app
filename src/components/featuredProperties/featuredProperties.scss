@@ -8,7 +8,7 @@
   
   .fpItem{
     flex: 1;
-    gap: 10px;
+    gap: 5px;
     display: flex;
     flex-direction: column;
   }
@@ -26,6 +26,7 @@
   
   .fpCity{
     font-weight: 300;
+    text-transform: capitalize;
   }
   
   .fpPrice{
