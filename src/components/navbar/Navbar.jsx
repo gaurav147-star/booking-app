@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import "./navbar.scss";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -13,6 +14,7 @@ import axiosInstance from "../../config";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [close, setClose] = useState(false);
+  const [drop, setDrop] = useState(false);
 
   const admin = useSelector((state) => state.admin);
   useEffect(() => {}, [admin]);
@@ -53,12 +55,20 @@ const Navbar = () => {
             ) : (
               ""
             )}
-            <Link className="user-name" to={`/profile/${user.username}`}>
-              <div>{user.name}</div>
-            </Link>
-            <button className="navButton" onClick={handleLogout}>
-              Logout
-            </button>
+            <div className="user-name" onClick={() => setDrop(!drop)}>
+              <span>{user.name}</span>
+              <ArrowDropDownIcon />
+            </div>
+            {drop && (
+              <div className="dropdownArrow">
+                <Link to={`/profile/${user.username}`} className="dropProfile">
+                  <div className="dropDownPer">Profile</div>
+                </Link>
+                <div className="dropDownPer" onClick={handleLogout}>
+                  Logout
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="navItems">

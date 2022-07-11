@@ -74,13 +74,9 @@ const Header = ({ type }) => {
   };
 
   return (
-    <div className={type === "list" ? "nonheader":"header"}>
-      <div
-        className={
-          type === "list" ? "listMode" : "headerContainer"
-        }
-      >
-        <div className={type === "list" ? "nonheaderList":"headerList"}>
+    <div className={type === "list" ? "nonheader" : "header"}>
+      <div className={type === "list" ? "listMode" : "headerContainer"}>
+        <div className={type === "list" ? "nonheaderList" : "headerList"}>
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
