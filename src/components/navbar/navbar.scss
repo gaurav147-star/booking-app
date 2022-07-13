@@ -12,6 +12,33 @@
   justify-content: center;
 }
 
+.navbarhome {
+  height: 50px;
+  // background: #0c1115;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0.9192051820728291) 100%,
+    rgba(0, 255, 226, 0.9681372549019608) 100%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  z-index: 222;
+  top: 0px;
+}
+.navbarhomeY {
+  height: 50px;
+  background: #0c1115;
+  // background: rgb(2, 0, 36);
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  z-index: 222;
+  top: 0px;
+}
+
 .navContainer {
   width: 100%;
   max-width: 1024px;

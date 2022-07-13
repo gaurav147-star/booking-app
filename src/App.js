@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from "./pages/admin/admin";
+import Checkin from "./pages/checkin/Checkin";
 import Gethotels from "./pages/gethotels/Gethotels";
 import Home from "./pages/home/Home";
 import Hotel from "./pages/hotel/Hotel";
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/checkin" element={<Checkin />} />
         {chkadmin && <Route path="/admin" element={<Admin />} />}
       </Routes>
     </BrowserRouter>

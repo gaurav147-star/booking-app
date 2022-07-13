@@ -11,11 +11,25 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import axiosInstance from "../../config";
 
-const Navbar = () => {
+const Navbar = ({ type }) => {
   const { user } = useContext(AuthContext);
   const [close, setClose] = useState(false);
   const [drop, setDrop] = useState(false);
+  const [navbar, setNavbar] = useState(false);
+  const changeBackground = () => {
+    console.log(window.scrollY);
+    if (window.scrollY >= 600) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
 
+  useEffect(() => {
+    changeBackground();
+    // adding the event when scroll change background
+    window.addEventListener("scroll", changeBackground);
+  });
   const admin = useSelector((state) => state.admin);
   useEffect(() => {}, [admin]);
   const navigate = useNavigate();
@@ -38,7 +52,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar">
+    <div className={type === "home" ?  navbar ?"navbarhome":"navbarhomeY" : "navbar"}>
       <div className="navContainer">
         <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
           <span className="logo">

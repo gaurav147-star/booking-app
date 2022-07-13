@@ -63,7 +63,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         })
       );
       setOpen(false);
-      navigate("/");
+      navigate("/checkin");
     } catch (err) {}
   };
 
@@ -92,6 +92,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 <div className="room">
                   <label>{roomNumber.number}</label>
                   <input
+                  style={{width:"20px",height:"20px"}}
                     type="checkbox"
                     value={roomNumber._id}
                     onChange={handleSelect}

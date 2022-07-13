@@ -25,10 +25,13 @@ const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
   const [destination, setDestination] = useState("");
 
+  const enddate = new Date();
+  enddate.setDate(new Date().getDate() + 1);
+  // console.log(d);
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
-      endDate: new Date(),
+      endDate: enddate,
       key: "selection",
     },
   ]);
@@ -112,7 +115,9 @@ const Header = ({ type }) => {
                 <button className="headerBtn">Sign in / Register</button>
               </Link>
             )} */}
-            <div className="headerSearch">
+            <div
+              className={type === "home" ? "headerSearchhome" : "headerSearch"}
+            >
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input

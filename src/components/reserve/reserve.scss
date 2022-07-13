@@ -8,12 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 500;
 }
 
 .reContainer {
   color: white;
   padding: 20px;
   position: relative;
+  width: 600px;
   height: auto;
   /* width: 50%; */
   // color: white;
@@ -46,23 +48,27 @@
   align-items: center;
   // gap: 110px;
   padding: 20px;
-  width: 400px;
+  // width: 400px;
   justify-content: space-between;
 }
-
-.rInfo {
+.rItemInfo{
+  width: 350px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.rInfo {
   // width: 300px;
 }
 
 .rTitle {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .rDesc {
   font-weight: 300;
+  font-size: 15px;
 }
 
 .rMax {

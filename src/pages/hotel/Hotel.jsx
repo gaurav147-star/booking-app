@@ -10,6 +10,7 @@ import {
   faCircleArrowRight,
   faCircleXmark,
   faLocationDot,
+  faAirFreshener,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
@@ -31,8 +32,8 @@ const Hotel = () => {
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
   const navigate = useNavigate();
   const { dates, options } = useContext(SearchContext);
-  
-  console.log(dates);
+
+  // console.log(dates);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -105,18 +106,18 @@ const Hotel = () => {
         )}
         <div className="hotelWrapper">
           {/* <button className="bookNow">Reserve or Book Now!</button> */}
-          <h1 className="hotelTitle">{data.name}</h1>
+          <div className="hotelTitle">{data.name}</div>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
             <span>{data.address}</span>
           </div>
-          <span className="hotelDistance">
-            Excellent location – {data.distance}m from center
+          {/* <span className="hotelDistance">
+            Excellent location – {data.distance} from center
           </span>
           <span className="hotelPriceHighlight">
             Book a stay over ${data.cheapestPrice} at this property and get a
             free airport taxi
-          </span>
+          </span> */}
           <div className="hotelImages">
             {data.photos?.map((photo, i) => (
               <div className="hotelImgWrapper" key={i}>
@@ -132,19 +133,34 @@ const Hotel = () => {
           </div>
           <div className="hotelDetails">
             <div className="hotelDetailsTexts">
-              <h1 className="hotelTitle">{data.title}</h1>
-              <p className="hotelDesc">{data.desc}</p>
+              <div className="hotelDetailsDesc" style={{ margin: "25px 0px" }}>
+                <div className="hotelTitle">Description</div>
+                <p className="hotelDesc">{data.desc}</p>
+              </div>
+              <div className="hotelDetailsAmen">
+                <div className="hotelTitle">Amenities</div>
+                <div className="hotelAmenties">
+                  {data.amenties && (
+                    <>
+                      {data.amenties.map((ele, i) => (
+                        <div className="hotelPerAmenties" key={i}>
+                          <span>{ele}</span>
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
             <div className="hotelDetailsPrice">
+              <h1>
+                <b>₹{days * data.cheapestPrice * options.room}</b> 
+              </h1>
               <h1>Perfect for a {days}-night stay!</h1>
               <span>
                 Located in the real heart of Krakow, this property has an
                 excellent location score of 9.8!
               </span>
-              <h2>
-                <b>₹{days * data.cheapestPrice * options.room}</b> ( {days}{" "}
-                nights)
-              </h2>
               <button onClick={handleClick}>Reserve or Book Now!</button>
             </div>
           </div>
