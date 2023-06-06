@@ -10,8 +10,8 @@ import {
   faCircleArrowRight,
   faCircleXmark,
   faLocationDot,
-  faAirFreshener,
 } from "@fortawesome/free-solid-svg-icons";
+import { format } from "date-fns";
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -29,11 +29,9 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const { user } = useContext(AuthContext);
-  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  const { data } = useFetch(`/hotels/find/${id}`);
   const navigate = useNavigate();
   const { dates, options } = useContext(SearchContext);
-
-  // console.log(dates);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -70,6 +68,7 @@ const Hotel = () => {
       navigate("/login");
     }
   };
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <div>
@@ -142,25 +141,61 @@ const Hotel = () => {
                 <div className="hotelAmenties">
                   {data.amenties && (
                     <>
-                      {data.amenties.map((ele, i) => (
+                      {/* {data.amenties} */}
+                      {(expanded
+                        ? data.amenties
+                        : data.amenties.slice(0, 6)
+                      ).map((ele, i) => (
                         <div className="hotelPerAmenties" key={i}>
                           <span>{ele}</span>
                         </div>
                       ))}
+                      <div
+                        style={{
+                          margin: "8px 5px",
+                          fontSize: "16px",
+                          color: "#171537",
+                          fontWeight: "600",
+                        }}
+                        onClick={() => setExpanded(!expanded)}
+                      >
+                        {expanded ? "Show Less" : "Show More"}
+                      </div>
                     </>
                   )}
                 </div>
               </div>
+              {/* <div className="hotelDetailsAmen">
+                <div className="hotelTitle">Choose your room</div>
+                <div className="hotelAmenties"></div>
+              </div> */}
             </div>
             <div className="hotelDetailsPrice">
               <h1>
-                <b>₹{days * data.cheapestPrice * options.room}</b> 
+                <b>₹{days * data.cheapestPrice * options.room}</b>
+                <p style={{ fontSize: "12px" }}>inclusive of all taxes</p>
               </h1>
-              <h1>Perfect for a {days}-night stay!</h1>
-              <span>
+              {/* <div style={{display:"flex",justifyContent:"space-between"}}> */}
+
+              <div>
+                <h4>
+                  {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                    dates[0].endDate,
+                    "MM/dd/yyyy"
+                  )}`}
+                </h4>
+                <span> Perfect for a {days}-night stay!</span>
+              </div>
+              <div>
+                <h4>
+                  {`${options.adult} adult · ${options.children} children · ${options.room} room`}
+                </h4>
+              </div>
+              {/* </div> */}
+              {/* <span>
                 Located in the real heart of Krakow, this property has an
                 excellent location score of 9.8!
-              </span>
+              </span> */}
               <button onClick={handleClick}>Reserve or Book Now!</button>
             </div>
           </div>

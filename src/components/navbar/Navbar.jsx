@@ -17,7 +17,7 @@ const Navbar = ({ type }) => {
   const [drop, setDrop] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const changeBackground = () => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
     if (window.scrollY >= 600) {
       setNavbar(true);
     } else {
@@ -52,7 +52,11 @@ const Navbar = ({ type }) => {
   };
 
   return (
-    <div className={type === "home" ?  navbar ?"navbarhome":"navbarhomeY" : "navbar"}>
+    <div
+      className={
+        type === "home" ? (navbar ? "navbarhome" : "navbarhomeY") : "navbar"
+      }
+    >
       <div className="navContainer">
         <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
           <span className="logo">
