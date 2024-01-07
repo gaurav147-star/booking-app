@@ -17,7 +17,7 @@
   .siDesc {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     flex: 2;
   }
   
@@ -40,8 +40,9 @@
   }
   
   .siSubtitle{
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 14px;
+    // font-weight: bold;
+    color: rgb(93, 93, 93);
   }
   
   .siFeatures{
@@ -99,7 +100,8 @@
   }
   
   .siCheckButton{
-    background-color: #0071c2;
+    // background-color: #0071c2;
+    background: linear-gradient(180deg, rgba(2, 0, 36, 0.9192051821) 100%, rgba(0, 255, 226, 0.9681372549) 100%, rgb(0, 0, 0) 100%);
     color: white;
     font-weight: bold;
     padding: 10px 5px;

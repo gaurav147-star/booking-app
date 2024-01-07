@@ -1,0 +1,41 @@
+.navbar {
+  height: 50px;
+  /* background-color: #228000; */
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0.9192051820728291) 100%,
+    rgba(0, 255, 226, 0.9681372549019608) 100%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1024px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.backarrow :hover {
+  background: rgba(194, 194, 194, 0.435);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.backarrow {
+  cursor: pointer;
+}
+.backarrow > link :hover {
+  text-decoration: none;
+}
+
+.propsData {
+  text-transform: capitalize;
+  font-weight: bold;
+  // text-decoration: none;
+  color: white;
+}

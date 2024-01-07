@@ -4,7 +4,7 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
 import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
-import axios from "axios";
+import axiosInstance from "../../config";
 import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpen, hotelId }) => {
@@ -56,27 +56,27 @@ const Reserve = ({ setOpen, hotelId }) => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
-          const res = axios.put(`/rooms/availability/${roomId}`, {
+          const res = axiosInstance.put(`/rooms/availability/${roomId}`, {
             dates: alldates,
           });
           return res.data;
         })
       );
       setOpen(false);
-      navigate("/");
+      navigate("/checkin");
     } catch (err) {}
   };
 
   return (
     <div className="reserve">
-      <div className="rContainer">
+      <div className="reContainer">
         <FontAwesomeIcon
           icon={faCircleXmark}
           className="rClose"
           onClick={() => setOpen(false)}
         />
 
-        <span>Select your rooms:</span>
+        <span style={{"fontSize":"1.3rem"}}>Select your rooms:</span>
         {data.map((item) => (
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
@@ -92,6 +92,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 <div className="room">
                   <label>{roomNumber.number}</label>
                   <input
+                  style={{width:"20px",height:"20px"}}
                     type="checkbox"
                     value={roomNumber._id}
                     onChange={handleSelect}

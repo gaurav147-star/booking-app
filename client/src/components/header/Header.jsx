@@ -13,18 +13,25 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
   const [destination, setDestination] = useState("");
 
+  const enddate = new Date();
+  enddate.setDate(new Date().getDate() + 1);
+  // console.log(d);
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
-      endDate: new Date(),
+      endDate: enddate,
       key: "selection",
     },
   ]);
@@ -36,9 +43,9 @@ const Header = ({ type }) => {
     room: 1,
   });
 
-  
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  useEffect(() => {}, [user]);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -52,18 +59,27 @@ const Header = ({ type }) => {
   const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
-    navigate("/hotels", { state: { destination, dates, options } });
+    if (destination !== "") {
+      const destinationLower = destination.toLowerCase();
+      // console.log(destinationLower);
+      dispatch({
+        type: "NEW_SEARCH",
+        payload: { destinationLower, dates, options },
+      });
+      navigate("/hotels", { state: { destination, dates, options } });
+    } else {
+      toast("Enter the destination!");
+    }
+  };
+
+  const handleBack = () => {
+    navigate(-1);
   };
 
   return (
-    <div className="header">
-      <div
-        className={
-          type === "list" ? "headerContainer listMode" : "headerContainer"
-        }
-      >
-        <div className="headerList">
+    <div className={type === "list" ? "nonheader" : "header"}>
+      <div className={type === "list" ? "listMode" : "headerContainer"}>
+        <div className={type === "list" ? "nonheaderList" : "headerList"}>
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
@@ -85,17 +101,23 @@ const Header = ({ type }) => {
             <span>Airport taxis</span>
           </div>
         </div>
-        {type !== "list" && (
+        {type !== "list" ? (
           <>
             <h1 className="headerTitle">
               A lifetime of discounts? It's Genius.
             </h1>
             <p className="headerDesc">
               Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Lamabooking account
+              more with a free Aron-booking account
             </p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
-            <div className="headerSearch">
+            {/* {!user && (
+              <Link rel="stylesheet" to="/login">
+                <button className="headerBtn">Sign in / Register</button>
+              </Link>
+            )} */}
+            <div
+              className={type === "home" ? "headerSearchhome" : "headerSearch"}
+            >
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input
@@ -104,6 +126,7 @@ const Header = ({ type }) => {
                   className="headerSearchInput"
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
+                  required
                 />
               </div>
               <div className="headerSearchItem">
@@ -206,8 +229,27 @@ const Header = ({ type }) => {
               </div>
             </div>
           </>
+        ) : (
+          <>
+            <ArrowBackIcon
+              sx={{ fontSize: 27 }}
+              onClick={handleBack}
+              style={{ cursor: "pointer" }}
+            />
+          </>
         )}
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

@@ -16,9 +16,11 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
-
+  // console.log(destination);
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `/hotels/getCityHotels?city=${destination.toLowerCase()}&min=${min || 0}&max=${
+      max || 5000
+    }`
   );
 
   const handleClick = () => {
@@ -106,15 +108,11 @@ const List = () => {
             <button onClick={handleClick}>Search</button>
           </div>
           <div className="listResult">
-            {loading ? (
-              "loading"
-            ) : (
-              <>
-                {data.map((item) => (
-                  <SearchItem item={item} key={item._id} />
-                ))}
-              </>
-            )}
+            <>
+              {data.map((item) => (
+                <SearchItem item={item} key={item._id} />
+              ))}
+            </>
           </div>
         </div>
       </div>

@@ -18,6 +18,7 @@
   border-radius: 10px;
   position: sticky;
   top: 10px;
+  height: 84vh;
 }
 
 .lsItem {
@@ -70,7 +71,13 @@
 
 .listSearch > button {
   padding: 10px;
-  background-color: #0071c2;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0.9192051820728291) 100%,
+    rgba(0, 255, 226, 0.9681372549019608) 100%,
+    rgba(0, 0, 0, 1) 100%
+  );
   color: white;
   border: none;
   width: 100%;
@@ -80,4 +87,10 @@
 
 .listResult {
   flex: 3;
+  height: 84vh;
+  overflow-y: scroll;
+}
+
+.listResult::-webkit-scrollbar{
+  display: none;
 }

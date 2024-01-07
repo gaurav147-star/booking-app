@@ -8,7 +8,7 @@
   
   .fpItem{
     flex: 1;
-    gap: 10px;
+    gap: 5px;
     display: flex;
     flex-direction: column;
   }
@@ -17,6 +17,7 @@
     width: 100%;
     height: 250px;
     object-fit: cover;
+    border-radius: 10px;
   }
   
   .fpName{
@@ -26,6 +27,7 @@
   
   .fpCity{
     font-weight: 300;
+    text-transform: capitalize;
   }
   
   .fpPrice{

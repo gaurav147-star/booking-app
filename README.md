@@ -3,15 +3,38 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2e5e3ce1-1a33-41c4-a6d3-21be63729647/deploy-status)](https://aronhotelbooking-app.netlify.app)
 ## Table of Contents
 * [General Info](#general-info)
+* [Screenshot](#screenshot)
 * [Features](#features)
 * [Technologies](#technologies)
-* [Screenshot](#screenshot)
 * [Getting Started](#screenshot)
 
 
 
 ## General Info
 Mernstack hotel booking website created using the MERN stack and implementing Redux. This website contains multiple pages that showcase the hotel's amenties and offerings and allows users to browse multiple rooms and book them. All bookings are stored and managed in the backend and user's are only able to book rooms that are currently available based on their selected dates as well as number of guests.
+## Screenshot
+
+1. Register Page
+   - Seamless registration page which asks for basic details of the user and registers new users using mail id and password which is encrypted!
+
+
+    - When password and confirm password are not same or the email id already exist, it will display an error message.
+    
+
+2. Login Page
+   - When the user already have an account and clicks the sign in button, he/she will be directed to the login page where the user needs to enter the registered email id.
+
+   - If the user enters an incorrect password or tries to login by entering an unregisterted email id, it will display an error message.
+
+   - When the user enters valid email id and password, he/she will be allowed to add items to cart and buy them successfully. 
+
+4. Home Page
+
+
+5. Logout
+   - The navbar has a dropdown on User's name from where user can click on logout button which directs the user back to the login page.
+
+Also the website has a favicon icon to enhance its UI and increase its authenticity.
 
 ## Features
 * Fullstack MERN Hotel Website that utilizes CRUD functionality 
@@ -32,8 +55,6 @@ The app was created with the following technologies
 * NodeJS
 * SASS
 
-## Screenshot
-![home_page](https://user-images.githubusercontent.com/78996081/176459502-7c8437bd-fcce-4db2-abed-3feef81f9a6c.png)
 
 ## Getting Started
 

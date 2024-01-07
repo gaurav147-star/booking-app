@@ -1,8 +1,32 @@
 .navbar {
-  height: 50px;
-  background-color: #003580;
+  height: 60px;
+  background: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
+}
+
+.navbarhome {
+  height: 60px;
+  // background: #0c1115;
+  background: rgb(255, 255, 255);
+
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  z-index: 222;
+  top: 0px;
+}
+.navbarhomeY {
+  height: 60px;
+  background: #ffffff;
+  /* Other styles */
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  z-index: 222;
+
+  top: 0px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a custom shadow */
 }
 
 .navContainer {
@@ -12,12 +36,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 980px;
+  margin: auto;
 }
-.user-name{
+.user-name {
   text-transform: capitalize;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(238, 125, 38);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.user-admin {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
 }
 .logo {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 22px;
 }
 
 .navButton {
@@ -25,5 +66,54 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  color: #003580;
+  color: rgb(2, 0, 36);
+  background: white;
+  /* border-radius: 2px; */
+  font-size: 15px;
+}
+
+.afterlogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownArrow {
+  z-index: 2;
+  position: absolute;
+  top: 50px;
+  // width: 130px;
+  background-color: white;
+  color: gray;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px -5px rgb(0, 0, 0, 0.4);
+}
+
+.dropDownPer {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  color: rgb(2, 0, 36);
+  // font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.dropProfile {
+  color: rgb(2, 0, 36);
+  text-decoration: none;
+  font-size: 17px;
+}
+.dropProfile:hover {
+  color: white;
+}
+
+.dropDownPer:hover {
+  // color: black;
+  background: rgb(2, 0, 36);
+  color: white;
+  border-radius: 5px;
+  // padding: 10px 0;
 }

@@ -4,9 +4,26 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  max-width: 980px;
+  margin: auto;
+  justify-content: center;
+}
+.footerCont {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
 
 .homeTitle {
   width: 1024px;
   font-size: 20px;
 }
+
+// .navHed{
+//   background: no-repeat url(../../assets/wp1846066.jpg);
+//   height: 70vh;
+//   object-fit: cover;
+//   width: 100%;
+// }
